@@ -1,0 +1,69 @@
+# Ground shipping pricing
+def cost_of_ground_shipping(weight):
+  if weight <= 2:
+    price_per_pound = 1.50
+  elif weight <= 6:
+    price_per_pound = 3.00
+  elif weight <= 10:
+    price_per_pound = 4.00
+  else:
+    price_per_pound = 4.75
+    
+  return 20 + (price_per_pound * weight)
+
+print(cost_of_ground_shipping(8.4))
+
+#Premium ground shipping pricing - fixed cost
+
+cost_of_shipping_ground_premium = 125.00
+
+# Drone shipping pricing
+
+def cost_of_drone_shipping(weight):
+  if weight <= 2:
+    price_per_pound = 4.50
+  elif weight <= 6:
+    price_per_pound = 9.00
+  elif weight <= 10:
+    price_per_pound = 12.00
+  else:
+    price_per_pound = 14.25
+    
+  return price_per_pound * weight
+
+print(cost_of_drone_shipping(1.5))
+
+# Choose the cheapest method
+
+def cheapest_shipping_method(weight):
+  
+  ground = cost_of_ground_shipping(weight)
+  premium = cost_of_shipping_ground_premium
+  drone = cost_of_drone_shipping(weight)
+  
+  if ground < premium and ground < drone:
+    method = "standard ground"
+    cost = ground
+  elif premium < ground and premium < drone:
+    method = "premium ground"
+    cost = premium
+  else:
+    method = "drone"
+    cost = drone
+    
+  print(
+    "The cheapest option is $%.2f with %s shipping."
+  	% (cost, method)
+  )
+    
+cheapest_shipping_method(4.8)
+cheapest_shipping_method(41.5)
+    
+    
+    
+    
+    
+    
+    
+ 
+  
